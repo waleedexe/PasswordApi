@@ -1,0 +1,21 @@
+﻿@model Password.Web.Models.UserModel
+
+@{
+    ViewBag.Title = "Validate";
+}
+
+<h2>Validate</h2>
+
+<div class="row">
+    @using (Html.BeginForm())
+    {
+        <label>Enter user id and password to validate</label>
+        @Html.EditorFor(m => m.UserId)
+        @Html.EditorFor(m => m.Password)
+        <input type="submit" name="submit" value="Validate" />
+    }
+
+    <div id="result" class="col-md-12">
+        @Html.DisplayFor(m => m.IsValid)
+    </div>
+</div>

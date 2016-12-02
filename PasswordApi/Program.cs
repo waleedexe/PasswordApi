@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Owin.Hosting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,17 @@ namespace PasswordApi
 {
     class Program
     {
+        const string baseAddress = "http://localhost:52288/";
+
         static void Main(string[] args)
         {
-            var gen = new PasswordGenerator();
+            using (WebApp.Start<Startup>(url: baseAddress))
+            {
+                //TestConnection();
+                Console.WriteLine("Listening on ({0}) ... ", baseAddress);
+
+                Console.ReadLine();
+            }
         }
     }
 }
